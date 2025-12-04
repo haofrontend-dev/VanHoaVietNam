@@ -119,7 +119,7 @@
             transform: translateZ(-20px) scale(1.02);
         }
 
-        
+
         /* LỚP HOA SEN (Phải) */
         #layer-vanhoa {
             background-image: url('/images/trong-dong.png');
@@ -128,6 +128,7 @@
             z-index: -10;
             transform: translateZ(-100px) scale(1.1);
         }
+
         /* LỚP MỚI: BIỂU TƯỢNG VÀNG ÁNH KIM (Góc trên bên trái) */
         #layer-gold-icon {
             /* Dùng SVG đơn giản tạo hình tròn hoặc huy hiệu vàng rực */
@@ -220,7 +221,6 @@
             /* Tăng khoảng cách chữ */
             font-weight: 700;
             font-size: 8rem;
-            animation: pulsing-glow 4s infinite ease-in-out;
             line-height: 0.8;
             padding-top: 15vh;
             /* Khoảng đệm trên để tiêu đề nằm cao hơn */
@@ -1806,8 +1806,35 @@
             items.forEach(item => io.observe(item));
         })();
 
+// --- BỔ SUNG: XỬ LÝ CẢM ỨNG CHO MOBILE ---
+        let touchStartY = 0;
 
+        window.addEventListener('touchstart', (e) => {
+            // Lưu vị trí ngón tay khi bắt đầu chạm
+            touchStartY = e.touches[0].clientY;
+        }, { passive: false });
+
+        window.addEventListener('touchmove', (e) => {
+            // Ngăn hành vi cuộn mặc định của trình duyệt (để tránh giật màn hình)
+            if (e.cancelable) e.preventDefault();
+
+            const touchCurrentY = e.touches[0].clientY;
+            // Tính khoảng cách ngón tay đã di chuyển
+            // touchStartY - touchCurrentY: Vuốt lên thì delta dương (cuộn xuống)
+            const deltaY = (touchStartY - touchCurrentY); 
+
+            // Cập nhật targetScroll tương tự như sự kiện wheel
+            // Số 2.0 là độ nhạy (sensitivity), bạn có thể tăng giảm tùy ý
+            targetScroll += deltaY * 2.0; 
+            
+            // Giới hạn không cho cuộn quá đầu hoặc quá cuối trang
+            targetScroll = Math.min(Math.max(0, targetScroll), maxScroll);
+
+            // Cập nhật lại vị trí cũ để tính toán cho frame tiếp theo mượt mà hơn
+            touchStartY = touchCurrentY;
+        }, { passive: false });
     </script>
+
 </body>
 
 </html>
