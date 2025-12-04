@@ -1,0 +1,1809 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Văn Hóa Đồng Tháp - Phong Cách Sử Thi</title>
+    <!-- Load Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Icon -->
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.2.0/css/all.css" />
+    <!-- Tải Font Oswald - Phong cách đậm, condensed, hùng tráng -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ---------------------------------------------------- */
+        /* THIẾT LẬP MÀU SẮC CHỦ ĐẠO (ĐỎ RỰC, VÀNG RÒNG, XANH ĐEN SÂU) */
+        /* ---------------------------------------------------- */
+        :root {
+            --color-red-hero: #e63946;
+            /* Đỏ sáng rực */
+            --color-yellow-accent: #ffd700;
+            /* Vàng ròng, ánh sáng */
+            --color-blue-deep: #00001a;
+            /* Xanh đen RẤT SÂU */
+            --color-bg-primary: #000000;
+            /* Đen tuyền */
+        }
+
+        /* Áp dụng font Oswald cho toàn bộ trang */
+        html {
+            /* TẮT cuộn mặc định của HTML/Body để JS kiểm soát */
+            overflow: hidden;
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Oswald', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+            background-color: var(--color-bg-primary);
+            height: 100%;
+        }
+
+        /* ---------------------------------------------------- */
+        /* HIỆU ỨNG ĐỘC ĐÁO: ÁNH SÁNG RỰC LỬA THỞ NHỊP NHÀNG (MẠNH HƠN) */
+        /* ---------------------------------------------------- */
+        @keyframes pulsing-glow {
+            0% {
+                transform: scale(1) skewX(-2deg);
+                text-shadow:
+                    0 0 12px var(--color-yellow-accent),
+                    0 0 40px rgba(255, 100, 0, 0.8);
+            }
+
+            50% {
+                transform: scale(1.005) skewX(2deg);
+                text-shadow:
+                    0 0 18px var(--color-yellow-accent),
+                    0 0 50px rgba(255, 50, 0, 1);
+            }
+
+            100% {
+                transform: scale(1) skewX(-2deg);
+                text-shadow:
+                    0 0 12px var(--color-yellow-accent),
+                    0 0 40px rgba(255, 100, 0, 0.8);
+            }
+        }
+
+        /* ---------------------------------------------------- */
+        /* HIỆU ỨNG SMOOTH SCROLL & PARALLAX */
+        /* ---------------------------------------------------- */
+
+        #scroll-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            /* Tăng tốc độ chuyển động để cảm giác mạnh mẽ hơn */
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            will-change: transform;
+            perspective: 1000px;
+        }
+
+        .parallax-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-repeat: no-repeat;
+            background-position: center bottom;
+        }
+
+        /* LỚP NỀN CHÍNH */
+        #layer-hero-bg {
+            background-image: url('/images/hero_banner.png');
+            background-size: cover;
+            background-position: center center;
+            z-index: -50;
+        }
+
+        /* LỚP HOA SEN (Phải) */
+        #layer-lotus {
+            background-image: url('/images/hero_mu.png');
+            background-size: 18% auto;
+            background-position: 85% 95%;
+            z-index: -10;
+            transform: translateZ(-100px) scale(1.1);
+        }
+
+        /* LỚP NÓN LÁ VÀ KHĂN RẰN (Trái) */
+        #layer-nónlá {
+            background-image: url(/images/hero_sen.png);
+            background-size: 25% auto;
+            background-position: -7% 90%;
+            z-index: -1;
+            transform: translateZ(-20px) scale(1.02);
+        }
+
+        
+        /* LỚP HOA SEN (Phải) */
+        #layer-vanhoa {
+            background-image: url('/images/trong-dong.png');
+            background-size: 18% auto;
+            background-position: 85% 18%;
+            z-index: -10;
+            transform: translateZ(-100px) scale(1.1);
+        }
+        /* LỚP MỚI: BIỂU TƯỢNG VÀNG ÁNH KIM (Góc trên bên trái) */
+        #layer-gold-icon {
+            /* Dùng SVG đơn giản tạo hình tròn hoặc huy hiệu vàng rực */
+            background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><radialGradient id='goldGlow' cx='50%' cy='50%' r='50%' fx='50%' fy='50%'><stop offset='0%' style='stop-color:%23FFD700;stop-opacity:1' /><stop offset='100%' style='stop-color:%23B8860B;stop-opacity:1' /></radialGradient></defs><circle cx='50' cy='50' r='45' fill='url(%23goldGlow)' stroke='%23E63946' stroke-width='2' opacity='0.8'/></svg>") no-repeat;
+            background-size: 10% auto;
+            /* Kích thước nhỏ hơn */
+            background-position: 5% 10%;
+            /* Góc trên bên trái */
+            z-index: -8;
+            /* Nằm sâu vừa phải */
+            transform: translateZ(-80px) scale(1.08);
+            opacity: 0.9;
+            filter: drop-shadow(0 0 10px var(--color-yellow-accent));
+        }
+
+
+        /* LỚP 4: Icon Năng Lượng Rực Lửa (Giữ nguyên) */
+        #layer-fire-icon {
+            background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' width='100' height='100'><defs><linearGradient id='lotusGlow' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%23FFD700;stop-opacity:1' /><stop offset='100%' style='stop-color:%23E63946;stop-opacity:1' /></linearGradient></defs><path fill='url(%23lotusGlow)' d='M50 0 L 70 30 L 100 40 L 80 50 L 100 60 L 70 70 L 50 100 L 30 70 L 0 60 L 20 50 L 0 40 L 30 30 Z' transform='scale(0.8) translate(10 0)'/></svg>") no-repeat center bottom;
+            background-size: 30% auto;
+            z-index: -5;
+            transform: translateZ(-50px) scale(1.05);
+            /* Thêm hiệu ứng nhấp nháy cho icon */
+            animation: pulsing-glow 3s infinite alternate;
+        }
+
+        /* LỚP MỚI: BIỂU TƯỢNG VÀNG ÁNH KIM (Góc trên bên trái) */
+        #layer-gold-icon {
+            /* Dùng SVG đơn giản tạo hình tròn hoặc huy hiệu vàng rực */
+            background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><radialGradient id='goldGlow' cx='50%' cy='50%' r='50%' fx='50%' fy='50%'><stop offset='0%' style='stop-color:%23FFD700;stop-opacity:1' /><stop offset='100%' style='stop-color:%23B8860B;stop-opacity:1' /></radialGradient></defs><circle cx='50' cy='50' r='45' fill='url(%23goldGlow)' stroke='%23E63946' stroke-width='2' opacity='0.8'/></svg>") no-repeat;
+            background-size: 10% auto;
+            /* Kích thước nhỏ hơn */
+            background-position: 5% 10%;
+            /* Góc trên bên trái */
+            z-index: -8;
+            /* Nằm sâu vừa phải */
+            transform: translateZ(-80px) scale(1.08);
+            opacity: 0.9;
+            filter: drop-shadow(0 0 10px var(--color-yellow-accent));
+        }
+
+        /* LỚP MỚI: DÒNG THỜI GIAN SẮC NÉT (DÀNH CHO SECTION 3) */
+        #layer-history-line {
+            /* SVG tạo các đường chéo, sắc nét, mô phỏng trục thời gian */
+            background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1400 800'><path fill='none' stroke='%23E63946' stroke-width='8' stroke-dasharray='10 5' d='M-100 300 L 1500 500 M-200 600 L 1400 700' opacity='0.5'/><path fill='none' stroke='%23FFD700' stroke-width='4' d='M0 0 L 1400 800' opacity='0.3'/></svg>") repeat;
+            background-size: 100% 100%;
+            z-index: 10;
+            /* Lớp này nằm trên các lớp Parallax khác nhưng dưới nội dung */
+            transform: translateZ(100px) scale(0.8);
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        /* LỚP MỚI: ĐỒ HỌA KHÁI NIỆM (Phần 4, trước Lịch sử) */
+        #layer-concept-graphics {
+            /* Tái tạo đồ họa Sông nước, Nhà và Quả cầu */
+            background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1400 800' fill='none'><defs><linearGradient id='goldGlow' x1='0%' y1='0%' x2='100%' y2='0%'><stop offset='0%' style='stop-color:%23FFD700;stop-opacity:0.8' /><stop offset='100%' style='stop-color:%23E63946;stop-opacity:0.8' /></linearGradient><filter id='glow'><feGaussianBlur stdDeviation='3' result='coloredBlur'/><feMerge><feMergeNode in='coloredBlur'/><feMergeNode in='SourceGraphic'/></feMerge></filter></defs><path d='M-10 400 Q 300 350, 700 450 T 1410 400' stroke='url(%23goldGlow)' stroke-width='3' filter='url(%23glow)' opacity='0.6'/><path d='M-10 420 Q 250 480, 600 420 T 1410 450' stroke='url(%23goldGlow)' stroke-width='2' opacity='0.4'/><rect x='650' y='280' width='100' height='100' rx='5' ry='5' stroke='url(%23goldGlow)' stroke-width='3' filter='url(%23glow)' fill='none'/><circle cx='1050' cy='320' r='80' stroke='url(%23goldGlow)' stroke-width='3' filter='url(%23glow)' opacity='0.7'/><circle cx='1050' cy='320' r='50' stroke='url(%23goldGlow)' stroke-width='2' opacity='0.5'/><path d='M970 320 H 1130 M1050 240 V 400' stroke='url(%23goldGlow)' stroke-width='1' opacity='0.5'/></svg>") no-repeat center;
+            background-size: 100% 100%;
+            z-index: 15;
+            /* Lớp đồ họa nằm trên nền, dưới nội dung */
+            transform: translateZ(150px) scale(0.9);
+            pointer-events: none;
+            /* Không chặn click chuột */
+        }
+
+
+        /* LỚP 5: Hiệu ứng Tia Sáng (Foreground Splitting) */
+        #layer-split {
+            /* Dùng SVG với đường nét mảnh, sắc bén (như vết chém) */
+            background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1400 800'><path fill='none' stroke='%23E63946' stroke-width='4' d='M0 0 L 1400 800 M1400 0 L 0 800' opacity='0.2'/><path fill='none' stroke='%23FFD700' stroke-width='2' d='M700 0 V 800 M0 400 H 1400' opacity='0.1'/></svg>") no-repeat center;
+            background-size: cover;
+            z-index: 5;
+            /* Cao hơn nội dung để tạo lớp phủ mờ */
+            transform: translateZ(50px) scale(0.9);
+            opacity: 0.15;
+            pointer-events: none;
+            /* Không chặn click chuột */
+        }
+
+        main {
+            position: relative;
+            z-index: 20;
+            min-height: 680vh;
+        }
+
+        /* Tiêu đề chính */
+        .majestic-title {
+            color: var(--color-yellow-accent);
+            letter-spacing: 0.4em;
+            /* Tăng khoảng cách chữ */
+            font-weight: 700;
+            font-size: 8rem;
+            animation: pulsing-glow 4s infinite ease-in-out;
+            line-height: 0.8;
+            padding-top: 25vh;
+            /* Khoảng đệm trên để tiêu đề nằm cao hơn */
+        }
+
+        @media (min-width: 768px) {
+            .majestic-title {
+                /* Giảm kích thước chữ một chút để phù hợp với bố cục tổng thể */
+                font-size: 10rem;
+            }
+        }
+
+        /* Cập nhật màu chữ cho các tiêu đề phụ */
+        .content-section h2 {
+            font-family: 'Oswald', sans-serif;
+            color: var(--color-yellow-accent);
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.7);
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+
+        /* Nền section nội dung tối */
+        .content-section {
+            background-image: url('/images/section_2_banner.png');
+            /* Vị trí: Góc dưới bên PHẢI */
+            background-repeat: no-repeat;
+        }
+
+        /* KHUNG NỘI DUNG VẾT NỨT (SHARP CRACKED BOX) */
+        .content-box {
+            background-color: var(--color-blue-deep);
+            border: 4px solid var(--color-red-hero);
+            /* Viền đỏ sắc nét */
+            box-shadow: 0 0 40px rgba(230, 57, 70, 0.5);
+            /* Shadow đỏ mạnh */
+            clip-path: polygon(2% 0,
+                    100% 0,
+                    98% 100%,
+                    0 100%,
+                    0 20%);
+            /* Tạo hình dạng góc cạnh, như bị chém */
+        }
+
+        /* CARD concept nổi 3D (Giữ nguyên) */
+        .concept-card {
+            background-color: var(--color-blue-deep);
+            border: 2px solid var(--color-yellow-accent);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
+            transform: translateZ(20px);
+            /* Đẩy ra phía trước */
+        }
+
+        .concept-card:hover {
+            transform: translateZ(40px) scale(1.05);
+            box-shadow: 0 15px 45px rgba(255, 215, 0, 0.5);
+        }
+
+        /* Lịch sử Timeline Card - TRẠNG THÁI BAN ĐẦU (ẨN) */
+        .history-timeline-card {
+            background-color: rgba(230, 57, 70, 0.1);
+            /* Nền đỏ mờ */
+            border: 1px solid var(--color-red-hero);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+            transition: all 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+            /* Thời gian chuyển đổi 1.2s */
+            /* Cắt góc đặc trưng */
+            clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
+
+            /* HIỆU ỨNG BAN ĐẦU: Dịch chuyển từ dưới lên và hơi xoay, mờ */
+            opacity: 0;
+            transform: translateZ(10px) translateY(100px) rotateX(-5deg);
+        }
+
+        /* Lịch sử Timeline Card - TRẠNG THÁI CUỐI (HIỂN THỊ) */
+        .history-timeline-card.is-visible {
+            opacity: 1;
+            /* Hiện ra */
+            transform: translateZ(30px) translateY(0) rotateX(0);
+            /* Trở về vị trí ban đầu và đẩy ra trước */
+            box-shadow: 0 0 35px rgba(255, 215, 0, 0.5);
+        }
+
+        .history-timeline-card:hover {
+            background-color: rgba(230, 57, 70, 0.2);
+            transform: translateZ(50px) scale(1.02);
+            box-shadow: 0 0 50px rgba(255, 215, 0, 0.7);
+        }
+
+        .period-number {
+            color: var(--color-yellow-accent);
+            text-shadow: 0 0 5px var(--color-red-hero);
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        /* Card đặc trưng cho Tutorial Section (Điều chỉnh màu sắc về Đỏ/Vàng) */
+        .tutorial-card {
+            background-color: var(--color-blue-deep);
+            border: 3px solid var(--color-yellow-accent);
+            /* Màu vàng ánh kim */
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            transition: all 0.4s ease;
+            clip-path: polygon(0 0, 100% 10%, 100% 100%, 0 90%);
+            /* Cắt góc độc đáo */
+            transform: translateZ(15px);
+        }
+
+        .tutorial-card:hover {
+            transform: translateZ(30px) scale(1.01);
+            box-shadow: 0 0 45px rgba(255, 215, 0, 0.8);
+        }
+
+
+        /* Biểu tượng (Giữ nguyên) */
+        .bronze-drum-svg {
+            filter: drop-shadow(0 0 15px var(--color-yellow-accent));
+            animation: pulsing-glow 5s infinite alternate;
+        }
+
+        /* Nút Khám phá theo phong cách Valorant (Đỏ/Đen/Vàng) */
+        .hero-button {
+            background-color: var(--color-red-hero);
+            color: var(--color-yellow-accent);
+            border: 3px solid var(--color-yellow-accent);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+            transition: all 0.3s ease;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            /* Cắt góc cho nút */
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+            border-radius: 0;
+        }
+
+        .hero-button:hover {
+            background-color: #a32222;
+            box-shadow: 0 0 35px rgba(255, 215, 0, 1);
+            transform: scale(1.1);
+        }
+
+        /* Đảm bảo Section 3 và Section 4 không bị đè lên nhau, và có nền riêng */
+        #section-3 {
+            background-image: url('./images/section_banner_3.png');
+            background-position: 85% 35%;
+            background-repeat: no-repeat;
+        }
+
+        #section-4 {
+            background-image: url('./images/section_banner_4.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+
+        /* THÊM HOVER CHO THẺ KHÁI NIỆM CON (Đã được tăng cường) */
+        .sub-concept-card:hover {
+            background-color: var(--color-blue-deep);
+            /* Chuyển sang màu xanh đen đậm hơn (ít mờ hơn) */
+            transform: translateZ(50px) scale(1.01);
+            /* Đẩy ra trước và phóng to nhẹ */
+            /* Tăng cường ánh sáng Vàng và thêm viền Đỏ mờ */
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5), 0 0 15px var(--color-red-hero);
+        }
+
+        /* ================================================= */
+        /* SECTION 5: ĐẶC TRƯNG CƠ BẢN - Tấm Bảng Đá Chữ Thập */
+        /* ================================================= */
+        #section-5,
+        #section-7 {
+            background-image: url("/images/section_banner_5.png");
+            /* Nền mới, nếu có */
+            background-size: cover;
+            background-position: center;
+        }
+
+        #section-6 {
+            background-image: url("/images/section_banner_6.png");
+            /* Nền mới, nếu có */
+            background-size: cover;
+            background-position: center;
+        }
+
+        #section-8 {
+            background-image: url("/images/section-banner-7.png");
+            /* Nền mới, nếu có */
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Cho phép 3D Transform trong Section 4 */
+        .perspective-3d {
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+
+        /* Thẻ đặc trưng cho Section 4 - Tăng độ sâu ban đầu */
+        .concept-topic-card {
+            background-color: var(--color-red-hero);
+            color: var(--color-yellow-accent);
+            border: 2px solid var(--color-yellow-accent);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            transition: all 0.3s ease;
+            font-weight: 700;
+            /* Cắt góc ngược lại */
+            clip-path: polygon(0 15%, 100% 0, 100% 85%, 0 100%);
+            transform: translateZ(50px);
+            /* ĐỘ SÂU BAN ĐẦU */
+            will-change: transform, opacity;
+            opacity: 0;
+            /* TRẠNG THÁI BAN ĐẦU ẨN */
+        }
+
+        .concept-topic-card:hover {
+            background-color: #a32222;
+            transform: scale(1.05) translateZ(60px);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+        }
+
+        /* Các thẻ khái niệm con */
+        .sub-concept-card {
+            background-color: rgba(0, 0, 26, 0.8);
+            /* Màu xanh đen mờ */
+            border-left: 5px solid var(--color-yellow-accent);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.1);
+            transform: translateZ(30px);
+            /* ĐỘ SÂU BAN ĐẦU */
+            will-change: transform, opacity;
+            opacity: 0;
+            /* TRẠNG THÁI BAN ĐẦU ẨN */
+        }
+
+        /* LỚP MỚI: ĐỒ HỌA HOA VĂN CUỐI CÙNG (Dành cho Section 5) */
+        #layer-motif-final {
+            /* SVG tạo hoa văn đối xứng, đậm chất dân tộc (như họa tiết Đông Sơn/Khánh hoa) */
+            background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1400 800'><defs><linearGradient id='redYellow' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%23E63946;stop-opacity:0.8' /><stop offset='100%' style='stop-color:%23FFD700;stop-opacity:0.8' /></linearGradient></defs><path fill='none' stroke='url(%23redYellow)' stroke-width='4' d='M200 600 C 400 300, 1000 300, 1200 600' opacity='0.5'/><circle cx='700' cy='500' r='150' fill='none' stroke='url(%23redYellow)' stroke-width='3' opacity='0.3'/></svg>") no-repeat center bottom;
+            background-size: 80% auto;
+            z-index: 10;
+            transform: translateZ(100px) scale(0.9);
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        /* Các lớp chung cần có */
+        .content-box {
+            background: rgba(4, 15, 33, 0.7);
+            /* Màu nền xanh đậm trong suốt */
+            border: 3px solid var(--color-red-accent);
+            /* Khung đỏ */
+            box-shadow: 0 0 40px rgba(230, 57, 70, 0.5);
+            /* Shadow đỏ */
+            backdrop-filter: blur(8px);
+            border-image: linear-gradient(45deg, var(--color-yellow-accent), var(--color-red-accent)) 1;
+            border-image-slice: 1;
+            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .spectial-card {
+            background: var(--color-blue-deep-trans);
+            border: 2px solid var(--color-red-hero);
+            border-top-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+            opacity: 0;
+            transform: translateX(0);
+            transition: all 0.8s ease;
+        }
+
+        .fade-left {
+            transform: translateX(-80px);
+        }
+
+        .fade-right {
+            transform: translateX(80px);
+        }
+
+        .spectial-card.show {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+        }
+
+        .children-card {
+            background: var(--color-blue-deep-trans);
+            border: 2px solid var(--color-yellow-accent);
+            border-top-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: 0 0 15px rgba(255, 225, 0, 0.4);
+            opacity: 0;
+            transform: translateY(40px);
+            transition: transform 0.8s ease, opacity 0.8s ease;
+        }
+
+        .protect-card {
+            background: var(--color-blue-deep-trans);
+            border: 2px solid var(--color-red-accent);
+            border-top-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+            opacity: 0;
+            transform: translateY(40px);
+            transition: transform 0.8s ease, opacity 0.8s ease;
+        }
+
+        .protect-card {
+            opacity: 0;
+            transform: translateX(-100vw);
+            transition: transform 0.8s cubic-bezier(.2, 1, .22, 1), opacity 0.8s ease;
+            will-change: transform, opacity;
+        }
+
+        .protect-card.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .children-card {
+            opacity: 0;
+            transform: translateX(100vw);
+            transition: transform 0.8s cubic-bezier(.2, 1, .22, 1), opacity 0.8s ease;
+            will-change: transform, opacity;
+        }
+
+        .children-card.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .spectial-card:hover {
+            transform: translateZ(10px) scale(1.03);
+        }
+
+        .protect-card:hover,
+        .children-card:hover {
+            transition: transform 0.25s ease !important;
+            /* Không dùng delay nữa */
+            transform: translateZ(10px) scale(1.03) !important;
+        }
+
+        .timeline-arrow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 0;
+            font-size: 3rem;
+            color: var(--color-red-hero);
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+            font-weight: bold;
+        }
+
+        .timeline-arrow {
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.6s ease;
+        }
+
+        .timeline-arrow.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Trạng thái trước khi hiện */
+        .section7-fade {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        /* Khi xuất hiện */
+        .section7-fade.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #section-2 .concept-card:hover {
+            background-color: rgb(29 78 216 / 0.8);
+        }
+
+        #typewriter {
+            align-items: center;
+        }
+
+        footer {
+            height: fit-content;
+        }
+    </style>
+</head>
+
+<body class="text-white">
+
+    <!-- NAVIGATION BAR -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 p-4 md:p-6 transition-all duration-300">
+        <div class="flex justify-between items-center max-w-7xl mx-auto">
+            <a href="#section-1"
+                class="text-3xl font-bold text-gray-200 hover:text-yellow-400 transition-colors tracking-widest uppercase">
+                Việt Nam
+            </a>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#section-2"
+                    class="nav-link text-gray-200 hover:text-red-500 font-semibold transition-colors tracking-widest">DI
+                    SẢN</a>
+                <a href="#section-4"
+                    class="nav-link text-gray-200 hover:text-red-500 font-semibold transition-colors tracking-widest">KHÁI
+                    NIỆM</a>
+                <a href="#section-3"
+                    class="nav-link text-gray-200 hover:text-red-500 font-semibold transition-colors tracking-widest">LỊCH
+                    SỬ</a>
+                <a href="#section-5"
+                    class="nav-link text-gray-200 hover:text-red-500 font-semibold transition-colors tracking-widest">ĐẶC
+                    TRƯNG</a>
+                <a href="#section-6"
+                    class="nav-link text-gray-200 hover:text-red-500 font-semibold transition-colors tracking-widest">PHÁT
+                    HUY</a>
+            </div>
+
+            <button id="menu-toggle" class="md:hidden text-gray-300 focus:outline-none">
+                <svg class="w-8 h-8 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="md:hidden mt-4 space-y-2 text-center hidden bg-black/80 p-4 rounded-xl">
+            <a href="#section-2"
+                class="nav-link block py-2 text-gray-200 hover:text-red-500 font-semibold transition-colors">DI SẢN</a>
+            <a href="#section-4"
+                class="nav-link block py-2 text-gray-200 hover:text-red-500 font-semibold transition-colors">KHÁI
+                NIỆM</a>
+            <a href="#section-3"
+                class="nav-link block py-2 text-gray-200 hover:text-red-500 font-semibold transition-colors">LỊCH SỬ</a>
+            <a href="#section-5"
+                class="nav-link block py-2 text-gray-200 hover:text-red-500 font-semibold transition-colors">ĐẶC
+                TRUNG</a>
+            <a href="#section-6"
+                class="nav-link block py-2 text-gray-200 hover:text-red-500 font-semibold transition-colors">PHÁT
+                HUY</a>
+        </div>
+    </nav>
+
+    <!-- ---------------------------------------------------- -->
+    <!-- PARALLAX LAYERS (Fixed Background) -->
+    <!-- ---------------------------------------------------- -->
+    <div id="layer-hero-bg" class="parallax-layer"></div>
+    <div id="layer-back" class="parallax-layer"></div>
+    <div id="layer-middle" class="parallax-layer"></div>
+    <div id="layer-front" class="parallax-layer"></div>
+
+    <div id="layer-lotus" class="parallax-layer"></div>
+    <div id="layer-nónlá" class="parallax-layer"></div>
+
+    <div id="layer-vanhoa" class="parallax-layer"></div>
+    <div id="layer-trongdong" class="parallax-layer"></div>
+
+    <!-- LỚP MỚI: BIỂU TƯỢNG VÀNG ÁNH KIM (Góc trên bên trái) -->
+    <div id="layer-gold-icon" class="parallax-layer"></div>
+
+    <!-- LỚP MỚI: ĐỒ HỌA KHÁI NIỆM (Phần 4, trước Lịch sử) -->
+    <div id="layer-concept-graphics" class="parallax-layer"></div>
+
+    <!-- LỚP MỚI: DÒNG THỜI GIAN SẮC NÉT (Tăng tốc độ cuộn cho Section 3) -->
+    <div id="layer-history-line" class="parallax-layer"></div>
+
+    <div id="layer-motif-final" class="parallax-layer"></div>
+    <div id="layer-fire-icon" class="parallax-layer"></div>
+    <div id="layer-split" class="parallax-layer"></div> <!-- Lớp Phủ Sắc Nét -->
+
+
+
+    <!-- ---------------------------------------------------- -->
+    <!-- SCROLL CONTAINER (Chứa Nội dung và sẽ được JS dịch chuyển) -->
+    <!-- ---------------------------------------------------- -->
+    <div id="scroll-container">
+        <main>
+
+            <!-- Section 1: Hero Banner -->
+            <section id="section-1"
+                class="h-[100vh] flex flex-col items-center justify-center p-8 text-center bg-transparent">
+                <div class="max-w-6xl w-full -mt-20">
+                    <h1 class="majestic-title text-8xl font-extrabold mb-4">
+                        VĂN HÓA
+                    </h1>
+                    <p class="text-xl md:text-4xl text-red-500 mb-8 max-w-2xl mx-auto font-bold tracking-widest">
+                        NỀN TẢNG TINH THẦN - SỨC MẠNH NỘI SINH
+                    </p>
+
+                    <div
+                        class="max-w-3xl mx-auto bg-gray-900/70 backdrop-blur-md p-8 rounded-xl border-t-4 border-b-4 border-yellow-500 shadow-2xl">
+                        <p class="text-base md:text-lg text-gray-300 leading-relaxed font-light">
+                            Văn hoá là nền tảng tinh thần của xã hội, là sức mạnh nội sinh quyết định sự trường tồn và
+                            phát triển của mỗi quốc gia. Văn hoá là nền tảng tinh thần của xã hội, là chiếc gương phản
+                            chiếu chiều sâu tâm hồn, tính cách và lịch sử của một dân tộc. Với Việt Nam – quốc gia có bề
+                            dày lịch sử hơn bốn nghìn năm, văn hoá giữ vai trò như sợi chỉ đỏ kết nối quá khứ – hiện tại
+                            – tương lai. Văn hoá không chỉ định hình bản sắc dân tộc mà còn góp phần định hướng sự phát
+                            triển bền vững của đất nước trong bối cảnh toàn cầu hoá.
+                        </p>
+                    </div>
+
+                    <div class="mt-20">
+                        <button data-target="#section-2"
+                            class="scroll-button px-12 py-4 text-2xl hero-button shadow-2xl">
+                            KHÁM PHÁ DI SẢN ↓
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: DI SẢN VĂN HÓA ÓC EO - GÒ THÁP -->
+            <section id="section-2"
+                class="content-section py-24 flex flex-col items-center justify-center p-8 border-t-4 border-red-600">
+                <h1
+                    class="majestic-title text-4xl md:text-7xl font-extrabold mb-16 text-center tracking-widest leading-tight">
+                    DI SẢN VĂN HÓA GÒ THÁP
+                </h1>
+
+                <div class="max-w-6xl w-full p-8 md:p-12 lg:p-16 rounded-none shadow-3xl transform skew-y-1">
+                    <div class="transform -skew-y-1">
+
+                        <!-- Biểu tượng Trống Đồng SVG (Giữ nguyên) -->
+                        <div class="flex justify-center mb-16 relative perspective-3d">
+                            <!-- SVG for Bronze Drum Icon -->
+                            <img src="/images/section_2_top.png" class="" />
+                        </div>
+                        <h2 class="text-3xl lg:text-4xl font-bold mb-8 text-center text-red-500">
+                            TRUNG TÂM PHẬT GIÁO VÀ KINH TẾ CỔ ĐẠI
+                        </h2>
+                        <!-- Các thẻ Concept -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                            <!-- Thẻ 1: Óc Eo & Gò Tháp -->
+                            <div
+                                class="concept-card p-6 text-center relative transform -rotate-1 translate-x-3 hover:rotate-0 hover:translate-x-0">
+                                <p class="text-2xl font-bold mb-3 text-yellow-400">VĂN HÓA ÓC EO</p>
+                                <ul class="list-none space-y-2 text-gray-300 text-left pl-0 text-sm">
+                                    <li class="flex items-start">
+                                        <span class="text-red-500 mr-2 text-xl">•</span>
+                                        Phát triển từ thế kỷ I đến VII SCN, là tiền thân của Vương quốc Phù Nam.
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-red-500 mr-2 text-xl">•</span>
+                                        Gò Tháp là trung tâm tôn giáo quan trọng nhất của khu vực Đồng Tháp Mười.
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Thẻ 2: Giá trị Di sản -->
+                            <div
+                                class="concept-card p-6 text-center relative z-10 transform translate-y-4 hover:translate-y-0">
+                                <p class="text-2xl font-bold mb-3 text-red-500">GIÁ TRỊ DI SẢN</p>
+                                <ul class="list-none space-y-2 text-gray-300 text-left pl-0 text-sm">
+                                    <li class="flex items-start">
+                                        <span class="text-yellow-400 mr-2 text-xl">★</span>
+                                        Chứng tích về một nền kinh tế biển và nông nghiệp hưng thịnh.
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-yellow-400 mr-2 text-xl">★</span>
+                                        Là bằng chứng về giao lưu quốc tế (Ấn Độ, La Mã) sớm nhất tại Việt Nam.
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Thẻ 3: Vai trò Hiện đại -->
+                            <div
+                                class="concept-card p-6 text-center relative transform rotate-1 -translate-x-3 hover:rotate-0 hover:translate-x-0">
+                                <p class="text-2xl font-bold mb-3 text-yellow-400">VAI TRÒ HIỆN ĐẠI</p>
+                                <ul class="list-none space-y-2 text-gray-300 text-left pl-0 text-sm">
+                                    <li class="flex items-start">
+                                        <span class="text-red-500 mr-2 text-xl">•</span>
+                                        Nền tảng lịch sử vững chắc cho thương hiệu "Đất Sen Hồng".
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-red-500 mr-2 text-xl">•</span>
+                                        Động lực phát triển du lịch văn hóa bền vững, thu hút đầu tư.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="mt-20">
+                    <!-- Nút Điều Hướng Mới -->
+                    <button data-target="#section-4" class="scroll-button px-12 py-4 text-2xl hero-button shadow-2xl">
+                        KHÁI NIỆM VĂN HÓA ↓
+                    </button>
+                </div>
+            </section>
+
+            <!-- ============================================== -->
+            <!-- SECTION 4: KHÁI NIỆM VỀ VĂN HOÁ VÀ VĂN HOÁ VIỆT NAM (MỚI) -->
+            <!-- ============================================== -->
+            <section id="section-4"
+                class="py-24 flex flex-col items-center justify-center p-8 border-t-4 border-yellow-600 relative overflow-hidden">
+                <h1 class="majestic-title text-4xl md:text-7xl font-extrabold mb-16 text-center tracking-widest leading-tight"
+                    style="padding-top: 0; font-size: 4rem;">
+                    KHÁI NIỆM VỀ VĂN HOÁ VÀ VĂN HOÁ VIỆT NAM
+                </h1>
+
+                <!-- Nội dung chính - Đặt trên lớp đồ họa và kích hoạt Parallax 3D cho chính nó -->
+                <div class="max-w-6xl w-full p-8 md:p-12 lg:p-16 relative perspective-3d" id="section4-content-wrapper">
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12" id="section4-grid">
+
+                        <!-- Khối Định Nghĩa -->
+                        <div class="col-span-1 md:col-span-2 sub-concept-card p-6 rounded-lg shadow-xl will-change-transform"
+                            id="definition-box">
+                            <h2 class="text-3xl font-bold mb-4 text-yellow-400 tracking-wider">ĐỊNH NGHĨA</h2>
+                            <p class="text-gray-300 text-base leading-relaxed">
+                                Văn hoá Việt Nam là hệ thống các giá trị vật chất và tinh thần do cộng đồng các dân tộc
+                                Việt Nam sáng tạo, bồi đắp, kế thừa để gìn giữ và phát huy. Dù văn hoá luôn vận động và
+                                thay đổi, dù tiếp thu tinh hoa văn hoá từ bên ngoài, nó vẫn giữ được **tính thống nhất
+                                trong đa dạng** xuyên suốt 54 dân tộc anh em và chiều dài lịch sử hàng ngàn năm.
+                            </p>
+                        </div>
+
+                        <!-- Khối Nền Tảng & Đặc Trưng -->
+                        <div class="sub-concept-card p-6 rounded-lg shadow-xl will-change-transform">
+                            <h2 class="text-2xl font-bold mb-4 text-red-500 tracking-wider">NỀN TẢNG & ĐẶC TRƯNG</h2>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                Văn hoá Việt Nam được xây dựng trên nền tảng **văn minh lúa nước**. Chúng ta đi lên từ
+                                nền văn minh sông Hồng, sông Cửu Long, gắn với làng xã, với nông nghiệp. Đặc trưng nổi
+                                bật là sự giao thoa, sự tiếp biến văn hoá giữa các dân tộc, tạo nên sự tổng hoà độc đáo.
+                            </p>
+                        </div>
+
+                        <!-- Khối Nền Trục Trung -->
+                        <div class="sub-concept-card p-6 rounded-lg shadow-xl will-change-transform">
+                            <h2 class="text-2xl font-bold mb-4 text-red-500 tracking-wider">NỀN TRỤC TRUNG</h2>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                Nền văn hoá Việt Nam có tính **cộng đồng và linh hoạt**. Sống dựa vào nông nghiệp và sự
+                                gắn kết làng xã, con người Việt Nam luôn đề cao tinh thần tập thể, đoàn kết. Đặc điểm
+                                này giúp dân tộc ta tồn tại và phát triển qua nhiều thăng trầm lịch sử.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Các Nút Chủ Đề -->
+                    <div class="flex flex-wrap justify-center gap-4 mt-16 relative z-30" id="section4-buttons">
+                        <button class="concept-topic-card px-6 py-3 text-lg transition-transform">VĂN MINH LÚA
+                            NƯỚC</button>
+                        <button class="concept-topic-card px-6 py-3 text-lg transition-transform bg-gray-700/80">54 DÂN
+                            TỘC ANH EM</button>
+                        <button class="concept-topic-card px-6 py-3 text-lg transition-transform">NGHĨA TÌNH CỘNG
+                            ĐỒNG</button>
+                        <button class="concept-topic-card px-6 py-3 text-lg transition-transform bg-blue-700/80">LÒNG
+                            YÊU NƯỚC</button>
+                    </div>
+                </div>
+
+                <div class="mt-20">
+                    <!-- Nút Điều Hướng Tiếp theo -->
+                    <button data-target="#section-3" class="scroll-button px-12 py-4 text-2xl hero-button shadow-2xl">
+                        KHÁM PHÁ LỊCH SỬ ↓
+                    </button>
+                </div>
+            </section>
+
+
+            <!-- ============================================== -->
+            <!-- SECTION 3: LỊCH SỬ HÌNH THÀNH VÀ PHÁT TRIỂN (ĐỔI ID THÀNH SECTION 5) -->
+            <!-- ============================================== -->
+            <section id="section-3"
+                class="py-24 flex flex-col items-center justify-center p-8 bg-gray-900/50 border-t-4 border-yellow-600">
+                <h1 class="majestic-title text-4xl md:text-7xl font-extrabold mb-16 text-center tracking-widest leading-tight"
+                    style="padding-top: 0; font-size: 4rem;">
+                    LỊCH SỬ HÌNH THÀNH VÀ PHÁT TRIỂN
+                </h1>
+                <h2
+                    class="text-2xl md:text-4xl text-red-500 mb-12 max-w-4xl mx-auto font-light tracking-widest text-center">
+                    CÁC THỜI KỲ ĐỊNH HÌNH BẢN SẮC VĂN HOÁ VIỆT NAM
+                </h2>
+
+                <div class="max-w-6xl w-full p-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                        <!-- 1. Thời kỳ tiền sử và sơ sử -->
+                        <div class="history-timeline-card p-6 relative">
+                            <div class="flex items-center space-x-4 mb-4">
+                                <span class="period-number">1</span>
+                                <h3 class="text-2xl font-bold text-yellow-400 leading-tight">TIỀN SỬ & SƠ SỬ</h3>
+                            </div>
+                            <p class="text-gray-300 text-sm md:text-base">
+                                Từ văn hoá Hoà Bình đến văn hoá Đông Sơn, hình thành nền văn minh lúa nước rực rỡ.
+                                **Trống đồng Đông Sơn** là biểu tượng cho óc sáng tạo, tư duy nghệ thuật và đời sống
+                                tinh thần phong phú.
+                            </p>
+                        </div>
+
+                        <!-- 2. Thời kỳ Văn Lang – Âu Lạc -->
+                        <div class="history-timeline-card p-6 relative">
+                            <div class="flex items-center space-x-4 mb-4">
+                                <span class="period-number">2</span>
+                                <h3 class="text-2xl font-bold text-yellow-400 leading-tight">VĂN LANG – ÂU LẠC</h3>
+                            </div>
+                            <p class="text-gray-300 text-sm md:text-base">
+                                Dưới thời Vua Hùng, văn hoá Việt hình thành nền tảng đầu tiên: tục thờ tổ tiên, tín
+                                ngưỡng phồn thực, cấu trúc làng xã, nghề nông và tinh thần yêu nước.
+                            </p>
+                        </div>
+
+                        <!-- 3. Thời kỳ Bắc thuộc -->
+                        <div class="history-timeline-card p-6 relative">
+                            <div class="flex items-center space-x-4 mb-4">
+                                <span class="period-number">3</span>
+                                <h3 class="text-2xl font-bold text-yellow-400 leading-tight">BẮC THUỘC (1000 NĂM)</h3>
+                            </div>
+                            <p class="text-gray-300 text-sm md:text-base">
+                                Chịu ảnh hưởng sâu sắc của văn hoá Trung Hoa (chữ viết, Nho giáo). Tuy nhiên, người Việt
+                                vẫn kiên trì giữ gìn bản sắc: duy trì tiếng nói, thờ cúng tổ tiên, phong tục làng xã.
+                            </p>
+                        </div>
+
+                        <!-- 4. Thời kỳ phong kiến độc lập -->
+                        <div class="history-timeline-card p-6 relative col-span-1 md:col-span-2">
+                            <div class="flex items-center space-x-4 mb-4">
+                                <span class="period-number">4</span>
+                                <h3 class="text-2xl font-bold text-yellow-400 leading-tight">PHONG KIẾN ĐỘC LẬP (X –
+                                    XIX)
+                                </h3>
+                            </div>
+                            <p class="text-gray-300 text-sm md:text-base mb-3">
+                                Văn hoá Việt phát triển rực rỡ và định hình rõ nét bản sắc dân tộc.
+                            </p>
+                            <ul class="list-disc list-inside space-y-1 text-gray-300 text-sm pl-4">
+                                <li>Kiến trúc (tháp Chăm, kinh thành Huế).</li>
+                                <li>Tín ngưỡng (Nho – Phật – Lão dung hợp).</li>
+                                <li>Văn học (Truyện Kiều, Bình Ngô đại cáo, thơ Hồ Xuân Hương).</li>
+                                <li>Nghệ thuật (hát chèo, tuồng, ca trù).</li>
+                            </ul>
+                        </div>
+
+                        <!-- 5. Thời kỳ cận – hiện đại -->
+                        <div class="history-timeline-card p-6 relative col-span-1 md:col-span-1">
+                            <div class="flex items-center space-x-4 mb-4">
+                                <span class="period-number">5</span>
+                                <h3 class="text-2xl font-bold text-yellow-400 leading-tight">CẬN – HIỆN ĐẠI</h3>
+                            </div>
+                            <p class="text-gray-300 text-sm md:text-base">
+                                Tiếp nhận văn hoá phương Tây (chữ Quốc ngữ, tư tưởng dân chủ). Từ 1945 đến nay, văn hoá
+                                bước vào thời kỳ hội nhập, đổi mới, hiện đại hoá mà vẫn giữ được nền tảng truyền thống.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="mt-20">
+                    <!-- Nút Điều Hướng Tiếp theo -->
+                    <button data-target="#section-5" class="scroll-button px-12 py-4 text-2xl hero-button shadow-2xl">
+                        Các đặc trưng cơ bản ↓
+                    </button>
+                </div>
+            </section>
+
+            <!-- ============================================== -->
+            <!-- SECTION 5: ĐẶC TRƯNG CƠ BẢN CỦA VĂN HOÁ VIỆT NAM -->
+            <!-- ============================================== -->
+            <section id="section-5"
+                class="py-24 flex flex-col items-center justify-center p-8 relative overflow-hidden border-t-4 border-yellow-600">
+
+                <h1 class="majestic-title text-4xl md:text-7xl font-extrabold mb-16 text-center tracking-widest leading-tight"
+                    style="font-size: 4rem;">
+                    ĐẶC TRƯNG CƠ BẢN CỦA VĂN HOÁ VIỆT NAM
+                </h1>
+
+                <div class="content-box box5 max-w-6xl w-full p-8 relative perspective-3d shadow-2xl">
+                    <h2 class="text-3xl md:text-4xl text-red-400 mb-8 font-light tracking-widest text-center">
+                        NĂM CỘT MỐC LÀM NÊN BẢN SẮC
+                    </h2>
+
+                    <div class="flex flex-col items-center space-y-6">
+                        <div class="spectial-card p-5 relative transform hover:rotate-z-1 w-full max-w-xl"
+                            data-delay="0.1">
+                            <div class="flex items-center space-x-3 mb-3">
+                                <h3 class="text-xl font-bold text-yellow-400 leading-tight">1. TÍNH CỘNG ĐỒNG CAO</h3>
+                            </div>
+                            <p class="text-gray-300 text-sm">
+                                Người Việt coi trọng gia đình, làng xóm; đề cao tinh thần “tương thân tương ái”, “một
+                                con ngựa đau cả tàu bỏ cỏ”.
+                                Cấu trúc làng xã trở thành cái nôi lưu giữ phong tục, tập quán và lối sống Việt
+                            </p>
+                        </div>
+
+                        <span class="timeline-arrow">↓</span>
+
+                        <div class="spectial-card p-5 relative transform hover:rotate-z-1 w-full max-w-xl"
+                            data-delay="0.2">
+                            <div class="flex items-center space-x-3 mb-3">
+                                <h3 class="text-xl font-bold text-yellow-400 leading-tight">2. VĂN MINH LÚA NƯỚC</h3>
+                            </div>
+                            <p class="text-gray-300 text-sm">
+                                Điều kiện tự nhiên hình thành lối sống:
+                            </p>
+                            <ul>
+                                <li>
+                                    Cần cù, sáng tạo
+                                </li>
+                                <li>
+                                    Biết tuân thủ quy luật thiên nhiên
+                                </li>
+                                <li>
+                                    Trọng tình nghĩa
+                                </li>
+                                <li>
+                                    Ẩm thực đa dạng với cơm, bánh chưng, bánh tét, phở, bún…
+                                </li>
+                                <li>
+                                    Nhiều lễ hội nông nghiệp: Tịch Điền, xuống đồng, hội Lim
+
+                                </li>
+                            </ul>
+                        </div>
+
+                        <span class="timeline-arrow">↓</span>
+
+                        <div class="spectial-card p-5 relative transform hover:rotate-z-1 w-full max-w-xl"
+                            data-delay="0.3">
+                            <div class="flex items-center space-x-3 mb-3">
+                                <h3 class="text-xl font-bold text-yellow-400 leading-tight">3. LINH HOẠT & MỀM DẺO</h3>
+                            </div>
+                            <p class="text-gray-300 text-sm">
+                                Khả năng tiếp thu và "Việt hoá" các yếu tố ngoại lai, biến thành bản sắc riêng (ví dụ:
+                                chữ Hán → chữ Nôm, Phật giáo Việt Nam).
+                            </p>
+                        </div>
+
+                        <span class="timeline-arrow">↓</span>
+
+                        <div class="spectial-card p-5 relative transform hover:rotate-z-1 w-full max-w-xl"
+                            data-delay="0.4">
+                            <div class="flex items-center space-x-3 mb-3">
+                                <h3 class="text-xl font-bold text-yellow-400 leading-tight">4. ĐA DẠNG TRONG THỐNG NHẤT
+                                </h3>
+                            </div>
+                            <p class="text-gray-300 text-sm">
+                                54 dân tộc với 54 sắc màu văn hoá khác nhau (trang phục, lễ hội) nhưng cùng chung tinh
+                                thần đoàn kết và ý thức dân tộc.
+                            </p>
+                        </div>
+
+                        <span class="timeline-arrow">↓</span>
+
+                        <div class="spectial-card p-5 relative transform hover:rotate-z-1 w-full max-w-xl"
+                            data-delay="0.5">
+                            <div class="flex items-center space-x-3 mb-3">
+                                <h3 class="text-xl font-bold text-yellow-400 leading-tight">5. TÍNH NHÂN VĂN SÂU SẮC
+                                </h3>
+                            </div>
+                            <p class="text-gray-300 text-sm">
+                                Đề cao đạo hiếu, nghĩa tình, lòng nhân ái. Được thể hiện qua ca dao, tục ngữ, lễ nghĩa
+                                gia đình và lối sống hướng thiện.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="mt-20">
+                    <!-- Nút Điều Hướng Tiếp theo -->
+                    <button data-target="#section-6" class="scroll-button px-12 py-4 text-2xl hero-button shadow-2xl">
+                        Gìn giữ và phát triển ↓
+                    </button>
+                </div>
+            </section>
+
+            <!-- ============================================== -->
+            <!-- SECTION 6: GIỮ GÌN VÀ PHÁT HUY VĂN HOÁ VIỆT NAM TRONG THỜI KỲ HỘI NHẬP -->
+            <!-- ============================================== -->
+            <section id="section-6"
+                class="py-24 flex flex-col items-center justify-center p-8 relative overflow-hidden border-t-4 border-yellow-600">
+
+                <h1 class="majestic-title text-4xl md:text-7xl font-extrabold mb-16 text-center tracking-widest leading-tight text-red-hero"
+                    style="font-size: 4rem;">
+                    GIỮ GÌN VÀ PHÁT HUY VĂN HOÁ VIỆT NAM
+                </h1>
+
+                <div class="content-box max-w-7xl w-full p-8 relative perspective-3d shadow-2xl">
+                    <h2 class="text-3xl md:text-4xl text-yellow-400 mb-12 font-light tracking-widest text-center">
+                        HÀNH ĐỘNG VÌ BẢN SẮC TRONG THỜI KỲ HỘI NHẬP
+                    </h2>
+
+                    <div class="flex flex-col lg:flex-row lg:space-x-12 space-y-12 lg:space-y-0">
+
+                        <div class="lg:w-1/2 space-y-6">
+                            <h3
+                                class="text-2xl font-bold text-red-500 mb-6 border-b-2 border-red-500 pb-2 tracking-wider">
+                                1. ĐỐI VỚI NHÀ NƯỚC VÀ XÃ HỘI
+                            </h3>
+
+                            <div class="protect-card p-5 w-full hover:rotate-z-1 hover:rotate-z-1" data-delay="0.1"
+                                data-type="card">
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-3xl text-yellow-400"><i
+                                            class="fa-solid fa-place-of-worship"></i></i></span>
+                                    <div>
+                                        <p class="text-lg font-bold text-red-400 leading-snug">Bảo tồn Di sản</p>
+                                        <p class="text-gray-300 text-sm mt-1">
+                                            Bảo tồn di sản văn hoá vật thể và phi vật thể (Ca trù, Nhã nhạc cung đình
+                                            Huế, áo dài, tín ngưỡng thờ Mẫu…).
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="protect-card p-5 w-full hover:rotate-z-1" data-delay="0.3" data-type="card">
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-3xl text-yellow-400"><i
+                                            class="fa-solid fa-hands-holding-circle"></i></span>
+                                    <div>
+                                        <p class="text-lg font-bold text-red-400 leading-snug">Môi trường Văn hoá Lành
+                                            mạnh</p>
+                                        <p class="text-gray-300 text-sm mt-1">
+                                            Xây dựng môi trường văn hoá lành mạnh, chống lại các sản phẩm độc hại, lai
+                                            căng.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="protect-card p-5 w-full hover:rotate-z-1" data-delay="0.5" data-type="card">
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-3xl text-yellow-400"><i
+                                            class="fa-solid fa-plane-arrival"></i></span>
+                                    <div>
+                                        <p class="text-lg font-bold text-red-400 leading-snug">Quảng bá Du lịch Văn hoá
+                                        </p>
+                                        <p class="text-gray-300 text-sm mt-1">
+                                            Phát triển du lịch văn hoá, quảng bá bản sắc Việt Nam ra thế giới.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="protect-card p-5 w-full hover:rotate-z-1" data-delay="0.7" data-type="card">
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-3xl text-yellow-400"><i class="fa-solid fa-icons"></i></span>
+                                    <div>
+                                        <p class="text-lg font-bold text-red-400 leading-snug">Gìn giữ Làng nghề</p>
+                                        <p class="text-gray-300 text-sm mt-1">
+                                            Hỗ trợ nghệ nhân, gìn giữ làng nghề truyền thống, ngôn ngữ, nhạc cụ dân tộc.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="lg:w-1/2 space-y-6">
+                            <h3
+                                class="text-2xl font-bold text-yellow-500 mb-6 border-b-2 border-yellow-500 pb-2 tracking-wider">
+                                2. ĐỐI VỚI THẾ HỆ TRẺ
+                            </h3>
+
+                            <div class="children-card p-5 w-full hover:rotate-z-1" data-delay="0.2" data-type="card">
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-3xl text-red-400"><i class="fa-regular fa-star"></i></span>
+                                    <div>
+                                        <p class="text-lg font-bold text-yellow-400 leading-snug">Trân trọng Lịch sử</p>
+                                        <p class="text-gray-300 text-sm mt-1">
+                                            Tự hào, trân trọng lịch sử, học tập tích cực về văn hoá dân tộc.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="children-card p-5 w-full hover:rotate-z-1" data-delay="0.4" data-type="card">
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-3xl text-red-400"><i class="fa-solid fa-earth-asia"></i></span>
+                                    <div>
+                                        <p class="text-lg font-bold text-yellow-400 leading-snug">Giữ gìn Tiếng Việt</p>
+                                        <p class="text-gray-300 text-sm mt-1">
+                                            Giữ gìn tiếng Việt chuẩn mực, ứng xử văn minh trên môi trường mạng.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="children-card p-5 w-full hover:rotate-z-1" data-delay="0.6" data-type="card">
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-3xl text-red-400"><i class="fa-solid fa-gifts"></i></span>
+                                    <div>
+                                        <p class="text-lg font-bold text-yellow-400 leading-snug">Tham gia Lễ hội Truyền
+                                            thống</p>
+                                        <p class="text-gray-300 text-sm mt-1">
+                                            Mặc áo dài trong sự kiện truyền thống, tham gia lễ hội và hoạt động văn hoá
+                                            địa phương.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="children-card p-5 w-full hover:rotate-z-1" data-delay="0.8" data-type="card">
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-3xl text-red-400"><i class="fa-solid fa-globe"></i></span>
+                                    <div>
+                                        <p class="text-lg font-bold text-yellow-400 leading-snug">Chủ động Quảng bá Sáng
+                                            tạo</p>
+                                        <p class="text-gray-300 text-sm mt-1">
+                                            Chủ động quảng bá văn hoá Việt Nam qua mạng xã hội bằng hình ảnh, video sáng
+                                            tạo.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="children-card p-5 w-full hover:rotate-z-1" data-delay="1.0" data-type="card">
+                                <div class="flex items-start space-x-3">
+                                    <span class="text-3xl text-red-400"><i class="fa-solid fa-brain"></i></span>
+                                    <div>
+                                        <p class="text-lg font-bold text-yellow-400 leading-snug">Tiếp thu có Chọn lọc
+                                        </p>
+                                        <p class="text-gray-300 text-sm mt-1">
+                                            Tiếp thu văn hoá quốc tế nhưng chọn lọc, không đánh mất cội nguồn.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="mt-20">
+                    <!-- Nút Điều Hướng Tiếp theo -->
+                    <button data-target="#section-7" class="scroll-button px-12 py-4 text-2xl hero-button shadow-2xl">
+                        KẾT LUẬN ↓
+                    </button>
+                </div>
+            </section>
+
+
+
+            <!-- 6. KÊNH VĂN HÓA SỬ THI (YOUTUBE SECTION) -->
+            <section id="section-8" class="py-20 md:py-32 border-t-4 border-yellow-500/50">
+                <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                    <h2
+                        class="text-4xl md:text-5xl font-extrabold text-center mb-12 text-yellow-400 uppercase tracking-widest leading-tight">
+                        KÊNH VĂN HÓA SỬ THI
+                    </h2>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                        <!-- Cột trái: Nội dung Văn hóa -->
+                        <div class="space-y-6">
+                            <h3 class="text-3xl font-bold text-gray-100 border-b-2 border-red-500 pb-2">HÀNH TRÌNH TÌM
+                                VỀ CỘI NGUỒN</h3>
+                            <p class="text-gray-300 text-lg leading-relaxed">
+                                Văn hóa Việt Nam là dòng chảy không ngừng nghỉ, được bồi đắp qua hàng ngàn năm lịch sử,
+                                từ huyền thoại Lạc Long Quân - Âu Cơ đến bản sắc hiện đại. Đây là sự kết tinh của tinh
+                                thần quật cường, lòng yêu nước, và sự hòa hợp giữa con người với thiên nhiên.
+                            </p>
+                            <ul class="list-disc list-inside text-gray-300 space-y-2 pl-4">
+                                <li><strong class="text-yellow-300">Tính Cộng Đồng:</strong> Đề cao "tình làng nghĩa
+                                    xóm," sự đoàn kết và tương thân tương ái.</li>
+                                <li><strong class="text-yellow-300">Tính Linh Hoạt:</strong> Khả năng thích ứng và dung
+                                    hợp các nền văn hóa khác để làm giàu thêm bản sắc dân tộc.</li>
+                                <li><strong class="text-yellow-300">Văn Hóa Ẩm Thực:</strong> Một di sản phi vật thể độc
+                                    đáo, nơi mỗi món ăn là một câu chuyện lịch sử.</li>
+                            </ul>
+                            <p class="text-gray-400 italic text-sm pt-4">
+                                Mời bạn cùng khám phá những thước phim đầy cảm hứng để cảm nhận trọn vẹn vẻ đẹp hùng vĩ
+                                và nhân văn của nền văn hóa này.
+                            </p>
+                        </div>
+
+                        <!-- Cột phải: YouTube Video Embed -->
+                        <div class="relative pt-[56.25%] rounded-xl overflow-hidden shadow-2xl shadow-yellow-500/30">
+                            <!-- 16:9 Aspect Ratio (56.25% padding top) -->
+                            <!-- Video Placeholder: "Văn hóa Việt Nam: Dòng chảy 4000 năm lịch sử" -->
+                            <iframe class="absolute top-0 left-0 w-full h-full"
+                                src="https://www.youtube.com/embed/NSnkb1IAjbE?si=GS0jQ2oKvHb8Hznh"
+                                title="Văn Hóa Việt Nam - Dòng Chảy Bất Tận" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================== -->
+            <!-- SECTION 7: KẾT LUẬN -->
+            <!-- ============================================== -->
+
+            <section id="section-7"
+                class="py-24 flex flex-col items-center justify-center p-8 relative overflow-hidden border-t-4 border-yellow-600">
+
+                <h1 class="majestic-title text-5xl md:text-7xl font-extrabold mb-16 text-center tracking-widest leading-tight text-yellow-accent"
+                    style="font-size: 4rem;">
+                    KẾT LUẬN
+                </h1>
+
+                <div
+                    class="content-box max-w-4xl w-full p-8 relative shadow-2xl bg-black bg-opacity-60 border-4 border-red-hero">
+
+                    <p class="section7-fade text-xl md:text-2xl text-gray-200 mb-8 leading-relaxed text-center"
+                        data-delay="0.1">
+                        <span class="text-red-hero font-bold">Văn hoá Việt Nam là một di sản quý giá</span>, kết tinh từ
+                        lao động, trí tuệ và tâm hồn của biết bao thế hệ người Việt. Trải qua thời gian và biến động
+                        lịch sử, văn hoá Việt Nam vẫn <span class="text-yellow-400 font-medium">bền bỉ, dẻo dai, giữ
+                            vững những giá trị cốt lõi: yêu nước, đoàn kết, nhân nghĩa, hiếu học và sáng tạo.</span>
+                    </p>
+
+                    <div class="h-1 w-3/4 mx-auto bg-yellow-400 my-10 shadow-lg" data-delay="0.5"></div>
+
+                    <p class="section7-fade text-lg md:text-xl text-gray-300 mb-8 leading-relaxed" data-delay="0.8">
+                        Ngày nay, trong bối cảnh toàn cầu hoá, nhiệm vụ giữ gìn và phát huy văn hoá dân tộc không chỉ là
+                        trách nhiệm của riêng Nhà nước mà còn là <span class="font-bold text-red-400">bổn phận của mỗi
+                            người dân – đặc biệt là thế hệ trẻ.</span> Muốn đất nước phát triển bền vững, chúng ta cần
+                        nhận thức sâu sắc giá trị văn hoá dân tộc, từ đó biết trân trọng, gìn giữ và lan toả những tinh
+                        hoa của cha ông, đồng thời tiếp thu tinh hoa thế giới để làm phong phú thêm bản sắc Việt Nam.
+                    </p>
+
+                    <div class="text-center mt-12 p-6 border-4 border-yellow-400 bg-red-hero bg-opacity-20 shadow-xl"
+                        data-delay="1.2">
+                        <p id="typewriter" style="height: 130px;"
+                            class="text-2xl md:text-3xl italic font-medium text-yellow-accent leading-snug">
+                            “Văn hoá chính là <span class="font-extrabold">sức mạnh mềm</span>, là niềm tự hào và là
+                            <span class="font-extrabold">tấm căn cước</span> của dân tộc Việt Nam trong hành trình hội
+                            nhập quốc tế. Gìn giữ văn hoá chính là gìn giữ linh hồn của dân tộc.”
+                        </p>
+                    </div>
+
+                </div>
+            </section>
+
+
+            <!-- Footer -->
+            <footer class="text-center py-8 text-gray-500 bg-gray-900 border-t-4 border-yellow-500/50">
+                <p>&copy; <span id="current-year"></span>
+                    Dự án Văn Hóa Đồng Tháp. Thiết kế theo phong cách Đồ Họa Sử Thi (Majestic Graphic Style).
+                </p>
+            </footer>
+
+
+        </main>
+    </div>
+
+    <script>
+        document.getElementById("current-year").textContent = new Date().getFullYear();
+        const scrollContainer = document.getElementById('scroll-container');
+        const mainContent = document.querySelector('main');
+        const historyCards = document.querySelectorAll('.history-timeline-card');
+
+        // Cập nhật danh sách các lớp Parallax
+        const parallaxLayers = {
+            heroBg: document.getElementById('layer-hero-bg'),
+            back: document.getElementById('layer-back'),
+            middle: document.getElementById('layer-middle'),
+            front: document.getElementById('layer-front'),
+            lotus: document.getElementById('layer-lotus'),
+            nónlá: document.getElementById('layer-nónlá'),
+            trongdong: document.getElementById('layer-vanhoa'),
+            goldIcon: document.getElementById('layer-gold-icon'),
+            conceptGraphics: document.getElementById('layer-concept-graphics'),
+            historyLine: document.getElementById('layer-history-line'),
+            fireIcon: document.getElementById('layer-fire-icon'),
+            split: document.getElementById('layer-split'),
+            motifFinal: document.getElementById('layer-motif-final')
+        };
+        const speeds = {
+            heroBg: 0.05,
+            back: 0.1,
+            middle: 0.3,
+            lotus: 0.2,
+            nónlá: 0.9,
+            trongdong: 0.7,
+            goldIcon: 0.4,
+            conceptGraphics: 0.5,
+            front: 0.5,
+            historyLine: 1.5,
+            fireIcon: 0.8,
+            split: 1.1,
+            motifFinal: 0.6
+        };
+
+        let currentScroll = 0;
+        let targetScroll = 0;
+        let maxScroll = 0;
+
+        // BIẾN MỚI CHO SECTION 4 ANIMATION
+        let section4Start = 0;
+        let section4End = 0;
+        let definitionBox, buttonGroup, conceptCards, topicButtons;
+
+        /**
+         * Hàm tính toán chiều cao cuộn tối đa và vị trí các section.
+         */
+        function calculateDimensions() {
+            maxScroll = mainContent.clientHeight - window.innerHeight;
+            targetScroll = Math.min(Math.max(0, targetScroll), maxScroll);
+
+            // Tính toán vị trí Section 4
+            const section4 = document.getElementById('section-4');
+            if (section4) {
+                section4Start = section4.offsetTop;
+                section4End = section4Start + section4.clientHeight;
+            }
+            // Lấy các phần tử cần animation
+            definitionBox = document.getElementById('definition-box'); // Khối Định Nghĩa lớn
+            conceptCards = document.querySelectorAll('#section4-grid .sub-concept-card:not(#definition-box)'); // 2 Khối Khái Niệm nhỏ
+            buttonGroup = document.getElementById('section4-buttons');
+            topicButtons = document.querySelectorAll('#section4-buttons button'); // 4 Nút Chủ Đề
+        }
+
+        /**
+         * HÀM MỚI: Kiểm tra vị trí của các thẻ lịch sử để kích hoạt hiệu ứng Keyframe
+         */
+        function checkVisibility() {
+            const viewportHeight = window.innerHeight;
+
+            historyCards.forEach(card => {
+                const cardTop = card.offsetTop;
+                const triggerPoint = cardTop - viewportHeight * 0.8;
+
+                if (currentScroll >= triggerPoint && !card.classList.contains('is-visible')) {
+                    card.classList.add('is-visible');
+                }
+            });
+        }
+
+        /**
+         * HÀM MỚI: Áp dụng hiệu ứng Parallax 3D cho các thành phần bên trong Section 4
+         */
+        function animateSection4() {
+            if (!definitionBox || !conceptCards.length || !topicButtons.length) return;
+
+            // Điểm bắt đầu cuộn khi Section 4 mới vào tầm nhìn (dưới đáy viewport)
+            const scrollStartPoint = section4Start - window.innerHeight;
+            const scrollDistance = currentScroll - scrollStartPoint + 100;
+
+            // ĐIỀU CHỈNH TẠI ĐÂY (LẦN 2): Giảm animationDurationDistance xuống 100vh để tăng tốc
+            const animationDurationDistance = window.innerHeight * 1.5;
+
+            // Tiến trình chung từ 0 (bắt đầu vào) đến 1 (hoàn tất animation)
+            let progress = 0;
+            if (scrollDistance > 0) {
+                progress = Math.min(1, scrollDistance / animationDurationDistance);
+            }
+
+            // --- 1. Animation cho Khối Định Nghĩa (definitionBox) ---
+            // Tăng tốc độ, chỉ cần 80% progress là xong
+            const progressDef = Math.min(1, progress * 1.25);
+            const gridY = 100 * (1 - progressDef);
+            const gridRotateX = 15 * (1 - progressDef);
+            const gridOpacity = progressDef;
+
+            definitionBox.style.transform =
+                `translate3d(0, ${gridY}px, 0) rotateX(${gridRotateX}deg)`;
+            definitionBox.style.opacity = gridOpacity;
+
+
+            // --- 2. Animation cho 2 Thẻ Khái Niệm nhỏ (Staggered Slide-in) ---
+            conceptCards.forEach((card, index) => {
+                // Giảm delay factor: Card 1 bắt đầu 0.05, Card 2 bắt đầu 0.15
+                const delayFactor = 0.05 + index * 0.1;
+                const remainingLength = 1 - delayFactor;
+
+                // Card Progress từ 0 đến 1
+                const cardProgress = Math.min(1, Math.max(0, (progress - delayFactor) / remainingLength));
+
+                // Slide in từ bên cạnh và dưới, fade in
+                const slideX = 60 * (1 - cardProgress);
+                const slideY = 30 * (1 - cardProgress);
+                const cardOpacity = cardProgress;
+
+                // Card đầu tiên (index 0) dịch từ trái (âm), Card thứ hai (index 1) dịch từ phải (dương)
+                const directionX = index === 0 ? -slideX : slideX;
+
+                card.style.transform =
+                    `translate3d(${directionX}px, ${slideY}px, 0) rotateZ(${directionX * 0.05}deg)`;
+                card.style.opacity = cardOpacity;
+            });
+
+
+            // --- 3. Animation cho 4 Nút Chủ Đề (Staggered Scale and Fade) ---
+            const buttonStartProgress = 0.4; // Bắt đầu cực kỳ sớm (0.5 -> 0.4)
+            const buttonActivationLength = 1 - buttonStartProgress;
+
+            topicButtons.forEach((button, index) => {
+                // Giảm delay factor: 0.025 để các nút gần như xuất hiện cùng lúc
+                const buttonDelayFactor = index * 0.025 * buttonActivationLength;
+                const buttonProgressRaw = (progress - buttonStartProgress - buttonDelayFactor);
+
+                // Button Progress từ 0 đến 1 (chia cho độ dài hiệu quả)
+                const buttonProgress = Math.min(1, Math.max(0, buttonProgressRaw / (buttonActivationLength - buttonDelayFactor)));
+
+                // Scale up và fade in
+                const scale = 0.5 + 0.5 * buttonProgress;
+                const opacity = buttonProgress;
+
+                button.style.transform = `scale(${scale}) translateZ(50px)`; // Giữ nguyên độ sâu cố định
+                button.style.opacity = opacity;
+            });
+        }
+
+
+        /**
+         * Hàm chính để cập nhật vị trí cuộn mượt và hiệu ứng Parallax.
+         */
+        function updateScroll() {
+            // 1. Áp dụng cuộn mượt (Linear interpolation - Lerp)
+            currentScroll += (targetScroll - currentScroll) * 0.15;
+
+            // 2. Dịch chuyển nội dung chính ngược chiều cuộn
+            scrollContainer.style.transform = `translate3d(0, ${-currentScroll}px, 0)`;
+
+            // 3. Tính toán và áp dụng Parallax cho các lớp
+            const heroBgOffset = currentScroll * speeds.heroBg;
+            parallaxLayers.heroBg.style.transform = `translateY(${heroBgOffset}px)`;
+            const backOffset = currentScroll * speeds.back;
+            parallaxLayers.back.style.transform = `translate3d(0, ${backOffset}px, -800px) scale(1.8)`;
+            const middleOffset = currentScroll * speeds.middle;
+            parallaxLayers.middle.style.transform = `translate3d(0, ${middleOffset}px, -300px) scale(1.3)`;
+            const lotusOffset = currentScroll * speeds.lotus;
+            parallaxLayers.lotus.style.transform = `translate3d(0, ${lotusOffset}px, -400px) scale(1.1)`;
+            const frontOffset = currentScroll * speeds.front;
+            parallaxLayers.front.style.transform = `translate3d(0, ${frontOffset}px, -150px) scale(1.15)`;
+            const nónláOffset = currentScroll * speeds.nónlá;
+            parallaxLayers.nónlá.style.transform = `translate3d(0, ${nónláOffset}px, -20px) scale(1.02)`;
+            const trongdongOffset = currentScroll * speeds.trongdong;
+            parallaxLayers.trongdong.style.transform = `translate3d(0, ${trongdongOffset}px, -100px) scale(1.05)`;
+            const goldIconOffset = currentScroll * speeds.goldIcon;
+            parallaxLayers.goldIcon.style.transform = `translate3d(0, ${goldIconOffset}px, -180px) scale(1.1)`;
+
+            // LỚP MỚI: Đồ họa Khái niệm
+            const conceptGraphicsOffset = currentScroll * speeds.conceptGraphics;
+            parallaxLayers.conceptGraphics.style.transform = `translate3d(0, ${conceptGraphicsOffset}px, 150px) scale(0.9)`;
+
+            const historyLineOffset = currentScroll * speeds.historyLine;
+            parallaxLayers.historyLine.style.transform = `translate3d(0, ${historyLineOffset}px, 100px) scale(0.8)`;
+            const fireIconOffset = currentScroll * speeds.fireIcon;
+            parallaxLayers.fireIcon.style.transform = `translate3d(0, ${fireIconOffset}px, -50px) scale(1.05)`;
+            const splitOffset = currentScroll * speeds.split;
+            parallaxLayers.split.style.transform = `translate3d(0, ${splitOffset}px, 50px) scale(0.9)`;
+            const motifFinalOffset = currentScroll * speeds.motifFinal;
+            parallaxLayers.motifFinal.style.transform = `translate3d(0, ${motifFinalOffset}px, 100px) scale(0.9)`;
+
+            // 4. KIỂM TRA VỊ TRÍ THẺ LỊCH SỬ
+            checkVisibility();
+
+            // 5. ANIMATION ĐẶC TRƯNG CHO SECTION 4
+            animateSection4();
+
+            requestAnimationFrame(updateScroll);
+        }
+
+        /**
+         * Xử lý sự kiện cuộn (để cập nhật targetScroll)
+         */
+        window.addEventListener('wheel', (e) => {
+            targetScroll += e.deltaY * 1.5; // Tăng tốc độ cuộn
+            targetScroll = Math.min(Math.max(0, targetScroll), maxScroll);
+            e.preventDefault();
+        }, { passive: false });
+
+
+        /**
+         * Xử lý sự kiện click vào các liên kết điều hướng
+         */
+        function handleSmoothScroll(targetSelector) {
+            const targetElement = document.querySelector(targetSelector);
+            if (targetElement) {
+                // Sử dụng offsetTop vì thẻ nằm trong scroll-container
+                const targetOffset = targetElement.offsetTop;
+                targetScroll = targetOffset;
+                targetScroll = Math.min(Math.max(0, targetScroll), maxScroll);
+            }
+            document.getElementById('mobile-menu').classList.add('hidden');
+        }
+
+        document.querySelectorAll('.scroll-button, .nav-link').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href') || this.getAttribute('data-target');
+                handleSmoothScroll(targetId);
+            });
+        });
+
+        /**
+         * Thiết lập trạng thái ban đầu của các phần tử Section 4
+         */
+        function initializeSection4State() {
+            // Lấy lại các phần tử (đảm bảo chúng đã được tính toán trong calculateDimensions)
+            if (!definitionBox || !conceptCards.length || !topicButtons.length) return;
+
+            // Khối Định Nghĩa: Ẩn và dịch chuyển
+            definitionBox.style.opacity = 0;
+            definitionBox.style.transform = 'translate3d(0, 100px, 0) rotateX(15deg)';
+
+            // 2 Thẻ Khái Niệm nhỏ: Ẩn và dịch chuyển
+            conceptCards.forEach((card, index) => {
+                const directionX = index === 0 ? -60 : 60; // Trái/Phải
+                card.style.opacity = 0;
+                card.style.transform = `translate3d(${directionX}px, 30px, 0)`;
+            });
+
+            // 4 Nút Chủ Đề: Ẩn và scale nhỏ
+            topicButtons.forEach(button => {
+                button.style.opacity = 0;
+                button.style.transform = 'scale(0.5) translateZ(50px)';
+            });
+        }
+
+        // Khởi tạo và lắng nghe sự kiện
+        window.addEventListener('load', () => {
+            calculateDimensions();
+            // Thiết lập vị trí ban đầu của các thẻ là ẩn
+            historyCards.forEach(card => card.classList.remove('is-visible'));
+            initializeSection4State(); // Thiết lập trạng thái ban đầu cho Section 4
+            updateScroll(); // Bắt đầu vòng lặp animation
+        });
+        window.addEventListener('resize', calculateDimensions);
+
+
+        // --- Javascript cho Mobile Menu Toggle ---
+        document.getElementById('menu-toggle').addEventListener('click', function () {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // --- Javascript cho Sticky Header (Giữ nguyên) ---
+        function updateNavbar() {
+            if (currentScroll > 50) {
+                navbar.style.backgroundColor = 'rgba(0, 0, 0, 0.95)';
+            } else {
+                navbar.style.backgroundColor = 'rgba(0, 0, 0, 0.85)';
+            }
+            requestAnimationFrame(updateNavbar);
+        }
+        const navbar = document.getElementById('navbar');
+        updateNavbar();
+
+        const element = document.getElementById("typewriter");
+        const originalHTML = element.innerHTML;
+        const text = element.innerText;  // Lấy text thuần để gõ
+        let index = 0;
+        let isDeleting = false;
+        const speed = 40;       // tốc độ gõ
+        const delSpeed = 20;    // tốc độ xoá
+        const waitTime = 1500;  // chờ trước khi xoá
+
+        function typeLoop() {
+            if (!isDeleting) {
+                // Gõ từng ký tự
+                element.innerText = text.substring(0, index + 1);
+                index++;
+
+                if (index === text.length) {
+                    setTimeout(() => { isDeleting = true; }, waitTime);
+                }
+            } else {
+                // Xoá chữ
+                element.innerText = text.substring(0, index - 1);
+                index--;
+
+                if (index === 0) {
+                    isDeleting = false;
+                }
+            }
+
+            setTimeout(typeLoop, isDeleting ? delSpeed : speed);
+        }
+
+        // Khởi động
+        element.innerHTML = "";
+        typeLoop();
+
+        // =========================
+        // HIỆU ỨNG CHO SECTION 5
+        // =========================
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const cards = document.querySelectorAll("#section-5 .spectial-card");
+            const arrows = document.querySelectorAll("#section-5 .timeline-arrow");
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const el = entry.target;
+
+                    // Nếu là card → dùng delay theo data-delay
+                    if (el.classList.contains("spectial-card")) {
+                        const delay = parseFloat(el.dataset.delay || "0") * 1000;
+
+                        if (entry.isIntersecting) {
+                            el.classList.remove("show");
+                            setTimeout(() => el.classList.add("show"), delay);
+                        } else {
+                            el.classList.remove("show");
+                        }
+                    }
+
+                    // Nếu là arrow → delay tự động (ngắn hơn)
+                    if (el.classList.contains("timeline-arrow")) {
+                        const index = [...arrows].indexOf(el);
+                        const delay = 200 + index * 150; // stagger đẹp
+
+                        if (entry.isIntersecting) {
+                            el.classList.remove("show");
+                            setTimeout(() => el.classList.add("show"), delay);
+                        } else {
+                            el.classList.remove("show");
+                        }
+                    }
+
+                });
+            }, {
+                threshold: 0.3
+            });
+
+            // Cards trái/phải luân phiên
+            cards.forEach((card, index) => {
+                if (index % 2 === 0) card.classList.add("fade-left");
+                else card.classList.add("fade-right");
+                observer.observe(card);
+            });
+
+            // Bắt sự kiện cho arrow
+            arrows.forEach(arrow => observer.observe(arrow));
+        });
+
+        // =====================================
+        // HIỆU ỨNG XUẤT HIỆN protect-card & children-card
+        // =====================================
+        (function () {
+            const section = document.getElementById("section-6");
+            if (!section) return;
+
+            const cards = section.querySelectorAll(".protect-card, .children-card");
+
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+
+                    // Khi vào viewport → chạy animation
+                    if (entry.isIntersecting) {
+                        cards.forEach(card => {
+                            const delay = parseFloat(card.dataset.delay || 0) * 1000;
+                            card.style.transitionDelay = delay + "ms";
+
+                            // Thêm show để chạy hiệu ứng
+                            card.classList.add("show");
+                        });
+                    }
+
+                    // Khi rời viewport → reset để có thể chạy lại
+                    else {
+                        cards.forEach(card => {
+                            card.classList.remove("show");
+                            card.style.transitionDelay = "0ms";
+                        });
+                    }
+                });
+            }, { threshold: 0.25 });
+
+            io.observe(section);
+        })();
+
+        // Section 7 fade-in effect
+        (function () {
+            const section7 = document.getElementById("section-7");
+            if (!section7) return;
+
+            const items = section7.querySelectorAll("[data-delay]");
+
+            items.forEach(item => item.classList.add("section7-fade"));
+
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        const delay = parseFloat(el.getAttribute("data-delay") || 0) * 1000;
+                        el.style.transitionDelay = delay + "ms";
+                        el.classList.add("show");
+                    } else {
+                        // Reset để có thể chạy lại khi scroll quay lại
+                        const el = entry.target;
+                        el.classList.remove("show");
+                        el.style.transitionDelay = "0ms";
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            items.forEach(item => io.observe(item));
+        })();
+
+
+    </script>
+</body>
+
+</html>
